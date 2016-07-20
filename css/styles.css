@@ -1,0 +1,9 @@
+.jumbotron {
+  opacity: .7;
+  margin-top: 20px;
+  background-image: url(../img/pizzacat.gif);
+  background-size: cover;
+  background-position: 0% 50%;
+  background-repeat: no-repeat;
+  color: white;
+  text-shadow: black 0.1em 0.1em 0.1em;
