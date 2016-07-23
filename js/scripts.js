@@ -1,25 +1,36 @@
-function Pizza(size, toppings) {
+function Pizza(size) {
   this.size = size;
-  this.toppings = toppings;
- }
-}
+  this.topping = [];
+};
 
-Pizza.prototype.sizePrice = function() {
-  if (this.size === "small"){
-    return 8.99;
-  } else if (this.size === "medium") {
-    return 10.99;
-  } else {
-    return 12.99;
+Pizza.prototype.price = function() {
+  var totalPrice = 8.99 + (this.topping.length * 1);
+
+  if (this.size == "small") {
+    return totalPrice;
+} else if (this.size == "medium") {
+    return (totalPrice + 2);
+} else if (this.size == "large") {
+    return (totalPrice + 4);
   }
-}
 
-Pizza.prototype.pizzaPrice = function() {
-  var sizePrice = this.sizePrice(this.size);
-  var totalPrice = sizePrice + (this.toppings * 1);
   return totalPrice;
-}
+};
 
 $(document).ready(function() {
+
   $("form#pizza-menu").submit(function(event) {
+    var size = $("select#size").val();
+    var newPizza = new Pizza(size);
+    var toppings = $("input.topping:checkbox:checked").each(function() {
+      newPizza.topping.push(toppings);
+    });
+
+    var pizzaPrice = newPizza.price();
+
+    $("#output").show();
+    $("#total").text(pizzaPrice);
+
     event.preventDefault();
+  });
+});

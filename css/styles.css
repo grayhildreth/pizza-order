@@ -13,3 +13,7 @@
   color: white;
   text-shadow: black 0.1em 0.1em 0.1em;
 }
+
+#output {
+  display: none;
+}
